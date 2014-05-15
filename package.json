@@ -18,7 +18,7 @@
     "underscore" : "1.6.0"
   },
   "devDependencies": {
-    "should": ">= 0.2.1",
+    "should": ">= 3.3.1",
     "mocha": ">= 1.13.0"
   },
   "scripts": {
