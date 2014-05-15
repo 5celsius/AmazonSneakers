@@ -3,25 +3,43 @@ AmazonSneakers
 
 Module to Query Amazon's Product Advertising API for Shoes
 
+
 Usage
 =====
 
+Single Text Queries
+-----
+
 You can either use a single text query:
 
+
 ```javascript
-var sneakers = require('./lib/AmznReq/AmazonQuery');
-sneakers.shoeRequest("Nike Jordans", function(err, result) {
-    console.log('Look at all my pretty shoes!!! ' + shoes);
+var AmazonRequest = require('AmazonSneakers')(ENV['AWS_KEY'], ENV['AWS_PASS']);
+
+AmazonRequest.query('Nike', function(err, results){
+	console.log('Lots of Nike Shoes ' + results);
 });
 ```
 
-Or, you can supply an options object:
+Parameters
+-----
+
+###Brand
 ```javascript
-var sneakers = require('./lib/AmznReq/AmazonQuery');
-var options  = { brand : 'Nike', page : 1, gender : 'male'};
-sneakers.shoeRequest("Jordans", options, function(err, result) {
-    console.log('Look at all my pretty shoes!!! ' + shoes);
+AmazonRequest.query('flywire', { brand: 'nike' }, function(err, results){
+	console.log('Hot FlyWire Shoes: ' + results);
+});
+```
+###Gender
+```javascript
+AmazonRequest.query('jordans', { gender: 'mens' }, function(err, results){
+	console.log('Manly Jordans ' + results);
 });
 ```
 
-
+###Page
+```javascript
+AmazonRequest.query('reebok', { page: 2 }, function(err, results){
+	console.log("Will there really be 2 pages of Reebok? Lets find out: " + results);
+});
+```
