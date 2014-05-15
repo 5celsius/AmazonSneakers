@@ -2,8 +2,7 @@ var
 should					= require('should'),
 _ 							= require('underscore'),
 ENV 						= require('./../.env'),
-AmazonSneakers 	= require('./../lib/AmazonSneakers'),
-AmazonRequest 	= AmazonSneakers(ENV['AWS_KEY'], ENV['AWS_PASS']);
+AmazonRequest 	= require('./../lib/AmazonSneakers')(ENV['AWS_KEY'], ENV['AWS_PASS']);
 
 describe('Amazon Sneakers Test Suite', function () {
 	// Set Longer Timeout for api calls
@@ -89,8 +88,44 @@ describe('Amazon Sneakers Test Suite', function () {
 				});							
 			});		
 		});
+	});
+
+	describe('Not setting the credentials correctly', function () {
+
+		it('should return an error on the query when the AWS Key is not set', function (done) {
+			var AmazonReq = require('./../lib/AmazonSneakers')(null, ENV['AWS_PASS']);
+			AmazonReq.query('brooks', { page: 2 }, function(err, results){														
+				_.isString(err).should.be.true;
+				done(null);
+			});							
+		});
+
+		it('should return an error on the query when the AWS Pass is not set', function (done) {
+			var AmazonReq = require('./../lib/AmazonSneakers')(ENV['AWS_KEY'], null);
+			AmazonReq.query('brooks', { page: 2 }, function(err, results){														
+				_.isString(err).should.be.true;
+				done(null);
+			});										
+		});
+
+		it('should return an error on the query when the AWS Key is an empty String', function (done) {
+			var AmazonReq = require('./../lib/AmazonSneakers')('', ENV['AWS_PASS']);
+			AmazonReq.query('brooks', { page: 2 }, function(err, results){														
+				_.isString(err).should.be.true;
+				done(null);
+			});										
+		});
+
+		it('should return an error on the query when the AWS Pass is an empty String', function (done) {
+			var AmazonReq = require('./../lib/AmazonSneakers')(ENV['AWS_KEY'], '');
+			AmazonReq.query('brooks', { page: 2 }, function(err, results){														
+				_.isString(err).should.be.true;
+				done(null);
+			});										
+		});
 
 	});
+
 });
 
 // String Prototype Additions
