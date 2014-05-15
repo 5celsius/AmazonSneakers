@@ -24,10 +24,4 @@ sneakers.shoeRequest("Jordans", options, function(err, result) {
 });
 ```
 
-ToDo
-====
-
-Refactor out the AWS creds into either ENV vars or allow for them to be passed in through the options. Or, create state and init the module with the creds. 
-
-
 
