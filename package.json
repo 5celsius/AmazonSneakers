@@ -1,0 +1,36 @@
+{
+  "name": "sneakers",
+  "description": "Amazon Shoe Search Module Interface",
+  "version": "0.0.1",
+  "author": {
+    "name": "Taylor Halliday",
+    "email": "taylor@5celsius.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/5celsius/AmazonSneakers"
+  },
+  "main": "./lib/AmazonSneakers",
+  "dependencies": {
+    "request": "2.33.0",
+    "xml2js": "0.4.1",
+    "crypto-js": "3.1.2-2",
+    "underscore" : "1.6.0"
+  },
+  "devDependencies": {
+    "should": ">= 0.2.1",
+    "mocha": ">= 1.13.0"
+  },
+  "scripts": {
+    "test": "mocha -u bdd -R spec -c ./test/*test.js"
+  },
+  "license": "MIT",
+  "engine": {
+    "node": ">= 0.6"
+  },
+  "keywords": [
+    "amazon",
+    "shoes",
+    "appparel"
+  ]
+}
