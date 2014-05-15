@@ -5,10 +5,9 @@ Module to Query Amazon's Product Advertising API for Shoes
 
 
 Usage
-=====
-
-Single Text Queries
 -----
+
+###Single Text Queries
 
 You can either use a single text query:
 
